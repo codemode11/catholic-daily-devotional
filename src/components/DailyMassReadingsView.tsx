@@ -524,6 +524,7 @@ ${reading.reflection.content}`;
           <div className="p-4 sm:p-5 flex flex-col md:flex-row gap-5 items-center">
             <div className="w-full md:w-1/3 aspect-4/3 overflow-hidden rounded-xl bg-stone-950 shrink-0 border border-stone-700 relative group">
               <img 
+                key={pairedArt.id}
                 src={pairedArt.imageUrl} 
                 alt={pairedArt.title}
                 loading="eager"
