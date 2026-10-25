@@ -17,8 +17,7 @@ interface SacredArtViewProps {
 
 export const SacredArtView: React.FC<SacredArtViewProps> = ({ initialArtId, initialSelectedArtId }) => {
   const targetId = initialArtId || initialSelectedArtId;
-  const targetId = initialArtId || initialSelectedArtId;
-  const [selectedArt, setSelectedArt] = useState<SacredMasterpiece>(() => {
+    const [selectedArt, setSelectedArt] = useState<SacredMasterpiece>(() => {
     if (targetId) {
       const match = SACRED_MASTERPIECES.find(a => a.id === targetId);
       if (match) return match;
