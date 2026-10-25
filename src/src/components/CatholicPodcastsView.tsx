@@ -74,16 +74,7 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
 
   const handleShareEpisode = (episode: PodcastEpisode, e: React.MouseEvent) => {
     e.stopPropagation();
-    const text = `${episode.title}
-From "${episode.podcastTitle}" hosted by ${episode.podcastHost}
-
-SUMMARY:
-${episode.summary}
-
-KEY QUOTE:
-${episode.keyQuote}
-
-Listen and reflect on Soul Sanctum Catholic Podcasts.`;
+    const text = `${episode.title}\nFrom "${episode.podcastTitle}" hosted by ${episode.podcastHost}\n\nSUMMARY:\n${episode.summary}\n\nKEY QUOTE:\n${episode.keyQuote}\n\nListen and reflect on Soul Sanctum Catholic Podcasts.`;
 
     navigator.clipboard.writeText(text);
     setCopiedId(episode.id);
@@ -169,6 +160,7 @@ Listen and reflect on Soul Sanctum Catholic Podcasts.`;
                 src={featuredEpisode.podcastCoverUrl} 
                 alt={featuredEpisode.title} 
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-amber-500/50 shadow-md shrink-0"
+                loading="lazy"
               />
               <div className="min-w-0 space-y-1">
                 <span className="text-[10px] font-bold font-cinzel uppercase tracking-widest text-amber-400">
@@ -274,6 +266,7 @@ Listen and reflect on Soul Sanctum Catholic Podcasts.`;
                       src={show.coverUrl} 
                       alt={show.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                      loading="lazy"
                     />
                     <div className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded-full bg-black/60 backdrop-blur-xs text-[9px] font-bold text-amber-300 flex items-center gap-0.5">
                       <Star className="w-2.5 h-2.5 fill-current" />
@@ -333,7 +326,7 @@ Listen and reflect on Soul Sanctum Catholic Podcasts.`;
                 selectedCategory === cat.id
                   ? 'bg-amber-700 text-white font-bold shadow-xs'
                   : 'bg-stone-100 hover:bg-stone-200 text-stone-700'
-              }`}
+              }`)}
             >
               {cat.label}
             </button>
@@ -389,29 +382,37 @@ Listen and reflect on Soul Sanctum Catholic Podcasts.`;
                 <div className="flex items-start justify-between gap-4">
                   
                   <div className="flex items-start gap-3 sm:gap-4 min-w-0">
-                    {/* Play / Pause Circular Icon */}
-                    <button
-                      onClick={() => {
-                        if (isEpisodePlaying) {
-                          onPauseEpisode();
-                        } else {
-                          onPlayEpisode(episode);
-                        }
-                      }}
-                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-md transition-all cursor-pointer ${
-                        isEpisodePlaying
-                          ? 'bg-amber-600 text-white animate-pulse'
-                          : 'bg-stone-900 group-hover:bg-amber-700 text-amber-200 group-hover:text-white'
-                      }`}
-                      title={isEpisodePlaying ? 'Pause Episode' : 'Play Catholic Podcast'}
-                      aria-label="Play or pause episode"
-                    >
-                      {isEpisodePlaying ? (
-                        <Pause className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
-                      ) : (
-                        <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5" />
-                      )}
-                    </button>
+                    {/* Artwork + Play Overlay */}
+                    <div className="relative group/cover shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden shadow-sm border border-stone-200">
+                      <img 
+                        src={episode.podcastCoverUrl} 
+                        alt={episode.podcastTitle}
+                        className="w-full h-full object-cover group-hover/cover:scale-105 transition-transform duration-200"
+                        loading="lazy"
+                      />
+                      <button
+                        onClick={() => {
+                          if (isEpisodePlaying) {
+                            onPauseEpisode();
+                          } else {
+                            onPlayEpisode(episode);
+                          }
+                        }}
+                        className={`absolute inset-0 flex items-center justify-center transition-all cursor-pointer ${
+                          isEpisodePlaying
+                            ? 'bg-amber-600/90 text-white animate-pulse'
+                            : 'bg-black/35 group-hover/cover:bg-amber-700/80 text-white'
+                        }`}
+                        title={isEpisodePlaying ? 'Pause Episode' : 'Play Catholic Podcast'}
+                        aria-label="Play or pause episode"
+                      >
+                        {isEpisodePlaying ? (
+                          <Pause className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
+                        ) : (
+                          <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-0.5" />
+                        )}
+                      </button>
+                    </div>
 
                     {/* Metadata */}
                     <div className="space-y-1 min-w-0 text-left">
