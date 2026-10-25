@@ -35,6 +35,29 @@ interface CatholicPodcastsViewProps {
   onOpenDetailsModal: (episode: PodcastEpisode) => void;
 }
 
+// Direct original podcast artwork dictionary (Apple Podcasts official 600x600 covers)
+const PODCAST_ORIGINAL_COVERS: Record<string, string> = {
+  'bible-in-a-year': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/ca/87/e0/ca87e07d-9d97-a433-1dc9-55dcfbd54f17/mza_9875864189557480350.jpg/600x600bb.jpg',
+  'catechism-in-a-year': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/c9/9f/6f/c99f6f42-987e-2c81-bd25-c6c87d2a0db7/mza_9362465263115833762.jpg/600x600bb.jpg',
+  'fr-mike-schmitz-podcast': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/84/45/3d/84453d79-4244-3bba-8ae5-d2bddfbac119/mza_8515607687576084455.jpg/600x600bb.jpg',
+  'word-on-fire-show': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/8a/68/72/8a687278-ecba-0471-0f5d-8e831d0aac8a/mza_11737134873248527109.jpg/600x600bb.jpg',
+  'pints-with-aquinas': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/54/61/f1/5461f16d-2adb-b501-c9b7-0ef5e6d72eba/mza_7503559985443598183.jpeg/600x600bb.jpg',
+  'abiding-together': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/9b/f7/10/9bf7101e-e370-e36e-634b-01424e707a64/mza_735760324844123567.png/600x600bb.jpg',
+  'catholic-answers-live': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/7f/73/62/7f736228-cb24-a09b-2345-de20e26efc7a/mza_17932019903878545154.jpg/600x600bb.jpg',
+  'discerning-hearts': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/4d/99/ab/4d99abf1-ba50-4023-30ee-23da16783521/mza_16818450520579858771.jpg/600x600bb.jpg',
+  'catholic-talk-show': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/87/7a/c3/877ac313-ec51-8977-cc36-b2d198a804e0/mza_552176913549531801.jpeg/600x600bb.jpg',
+  'counsel-of-trent': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/bd/3a/73/bd3a73cd-8e36-c9f8-3fdc-867b9b16c877/mza_109888266879698107.jpg/600x600bb.jpg',
+  'thomistic-institute': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/ab/78/90/ab78906c-c98e-b3ab-48eb-b4e536754dfa/mza_12049456275401586219.jpg/600x600bb.jpg',
+  'vatican-radio-podcast': 'https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/53/59/ae/5359aec5-b049-5dce-e3df-be0985fc9f03/mza_14565055678223969088.jpeg/600x600bb.jpg',
+};
+
+const getPodcastArtwork = (id?: string, fallbackUrl?: string): string => {
+  if (id && PODCAST_ORIGINAL_COVERS[id]) {
+    return PODCAST_ORIGINAL_COVERS[id];
+  }
+  return fallbackUrl || '';
+};
+
 export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
   currentPlayingEpisode,
   isPlaying,
@@ -55,7 +78,10 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
   });
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const featuredEpisode = getFeaturedPodcastEpisode();
+  const rawFeatured = getFeaturedPodcastEpisode();
+  const featuredEpisode = rawFeatured
+    ? { ...rawFeatured, podcastCoverUrl: getPodcastArtwork(rawFeatured.podcastId, rawFeatured.podcastCoverUrl) }
+    : null;
 
   const handleToggleSave = (episodeId: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -81,7 +107,10 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
     setTimeout(() => setCopiedId(null), 2200);
   };
 
-  const allEpisodes = getAllPodcastEpisodes();
+  const allEpisodes = getAllPodcastEpisodes().map(ep => ({
+    ...ep,
+    podcastCoverUrl: getPodcastArtwork(ep.podcastId, ep.podcastCoverUrl)
+  }));
 
   // Filter episodes based on category, show, and search query
   const filteredEpisodes = allEpisodes.filter(ep => {
@@ -263,7 +292,7 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
                 <div className="space-y-2">
                   <div className="relative aspect-square w-full rounded-xl overflow-hidden shadow-xs">
                     <img 
-                      src={show.coverUrl} 
+                      src={getPodcastArtwork(show.id, show.coverUrl)} 
                       alt={show.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
                       loading="lazy"
@@ -326,7 +355,7 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
                 selectedCategory === cat.id
                   ? 'bg-amber-700 text-white font-bold shadow-xs'
                   : 'bg-stone-100 hover:bg-stone-200 text-stone-700'
-              }`)}
+              }`}
             >
               {cat.label}
             </button>
