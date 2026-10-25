@@ -100,7 +100,16 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
 
   const handleShareEpisode = (episode: PodcastEpisode, e: React.MouseEvent) => {
     e.stopPropagation();
-    const text = `${episode.title}\nFrom "${episode.podcastTitle}" hosted by ${episode.podcastHost}\n\nSUMMARY:\n${episode.summary}\n\nKEY QUOTE:\n${episode.keyQuote}\n\nListen and reflect on Soul Sanctum Catholic Podcasts.`;
+    const text = `${episode.title}
+From "${episode.podcastTitle}" hosted by ${episode.podcastHost}
+
+SUMMARY:
+${episode.summary}
+
+KEY QUOTE:
+${episode.keyQuote}
+
+Listen and reflect on Soul Sanctum Catholic Podcasts.`;
 
     navigator.clipboard.writeText(text);
     setCopiedId(episode.id);
@@ -190,6 +199,7 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
                 alt={featuredEpisode.title} 
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-amber-500/50 shadow-md shrink-0"
                 loading="lazy"
+                referrerPolicy="no-referrer"
               />
               <div className="min-w-0 space-y-1">
                 <span className="text-[10px] font-bold font-cinzel uppercase tracking-widest text-amber-400">
@@ -296,6 +306,7 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
                       alt={show.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
                       loading="lazy"
+                      referrerPolicy="no-referrer"
                     />
                     <div className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded-full bg-black/60 backdrop-blur-xs text-[9px] font-bold text-amber-300 flex items-center gap-0.5">
                       <Star className="w-2.5 h-2.5 fill-current" />
@@ -418,6 +429,7 @@ export const CatholicPodcastsView: React.FC<CatholicPodcastsViewProps> = ({
                         alt={episode.podcastTitle}
                         className="w-full h-full object-cover group-hover/cover:scale-105 transition-transform duration-200"
                         loading="lazy"
+                        referrerPolicy="no-referrer"
                       />
                       <button
                         onClick={() => {
