@@ -205,13 +205,19 @@ ${reading.reflection.content}`;
     setTimeout(() => setCopied(false), 2500);
   };
 
-  // Associated masterpiece for Visio Divina (e.g. Caravaggio Calling of Matthew)
-  const pairedArt = SACRED_MASTERPIECES[0];
+  // Featured Visio Divina Masterpieces companion for the daily Mass readings
+  const featuredArtworks = [
+    SACRED_MASTERPIECES.find(a => a.id === 'art-supper-at-emmaus') || SACRED_MASTERPIECES[0],
+    SACRED_MASTERPIECES.find(a => a.id === 'art-raphael-disputation') || SACRED_MASTERPIECES[1],
+    SACRED_MASTERPIECES.find(a => a.id === 'art-murillo-immaculate-conception') || SACRED_MASTERPIECES[2]
+  ];
+  const [selectedArtIndex, setSelectedArtIndex] = useState(0);
+  const pairedArt = featuredArtworks[selectedArtIndex] || featuredArtworks[0];
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       
-      {/* Liturgical Day Banner & Date Bar */}
+      {/* Liturgical Day Banner and Date Bar */}
       <div className="bg-white/92 backdrop-blur-md rounded-xl shadow-xl border border-stone-200/90 overflow-hidden">
         <div className="p-4 sm:p-6 bg-gradient-to-r from-stone-900 to-stone-800 text-stone-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
@@ -293,7 +299,7 @@ ${reading.reflection.content}`;
           </div>
         </div>
 
-        {/* Lector Audio Controls + Secondary Controls: Font Size & Copy */}
+        {/* Lector Audio Controls + Secondary Controls: Font Size and Copy */}
         <div className="p-4 bg-[#FAF7F2]/90 backdrop-blur-sm border-t border-stone-200/80 space-y-3">
           <LectorControlsBar
             onPlay={handleToggleReadAloud}
@@ -512,41 +518,100 @@ ${reading.reflection.content}`;
         </div>
       </article>
 
-      {/* Masterpiece Sacred Art Companion: Visio Divina with Caravaggio */}
+      {/* Masterpiece Sacred Art Companion: Visio Divina */}
       {pairedArt && (
         <div className="bg-stone-900 rounded-xl text-stone-100 overflow-hidden shadow-lg border border-stone-800">
           <div className="p-4 sm:p-5 flex flex-col md:flex-row gap-5 items-center">
-            <div className="w-full md:w-1/3 aspect-4/3 overflow-hidden rounded-xl bg-stone-950 shrink-0 border border-stone-700">
+            <div className="w-full md:w-1/3 aspect-4/3 overflow-hidden rounded-xl bg-stone-950 shrink-0 border border-stone-700 relative group">
               <img 
                 src={pairedArt.imageUrl} 
                 alt={pairedArt.title}
-                referrerPolicy="no-referrer"
-                loading="lazy"
+                loading="eager"
                 onError={(e) => {
-                  if (pairedArt.fallbackImageUrl && e.currentTarget.src !== pairedArt.fallbackImageUrl) {
-                    e.currentTarget.src = pairedArt.fallbackImageUrl;
+                  const target = e.currentTarget;
+                  if (pairedArt.fallbackImageUrl && target.getAttribute('data-fallback') !== 'true') {
+                    target.setAttribute('data-fallback', 'true');
+                    target.src = pairedArt.fallbackImageUrl;
                   }
                 }}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                 onClick={() => onOpenArtViewer && onOpenArtViewer(pairedArt.id)}
               />
-            </div>
-            <div className="space-y-2 flex-1">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span className="text-xs font-bold font-serif text-amber-300 tracking-wide">
-                  Visio Divina • Master Painting
-                </span>
+              <div 
+                onClick={() => onOpenArtViewer && onOpenArtViewer(pairedArt.id)}
+                className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+              >
+                <div className="px-3 py-1.5 rounded-full bg-stone-950/80 text-amber-200 border border-amber-400/40 text-xs font-serif flex items-center gap-1.5">
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>Enlarge Masterpiece</span>
+                </div>
               </div>
-              <h4 className="font-serif text-xl font-bold text-white">
-                {pairedArt.title}
-              </h4>
-              <p className="text-xs text-stone-400 font-serif italic">
-                {pairedArt.artist} ({pairedArt.year}) — {pairedArt.location}
-              </p>
-              <p className="text-sm text-stone-300 font-serif leading-relaxed line-clamp-3">
+            </div>
+            <div className="space-y-2.5 flex-1 w-full">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-800 pb-2">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs font-bold font-serif text-amber-300 uppercase tracking-wider">
+                    Visio Divina • Sacred Masterpiece
+                  </span>
+                </div>
+                {/* Artwork Switcher Controls */}
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => setSelectedArtIndex((prev) => (prev === 0 ? featuredArtworks.length - 1 : prev - 1))}
+                    className="p-1 rounded hover:bg-stone-800 text-stone-400 hover:text-amber-200 transition-colors cursor-pointer"
+                    title="Previous Masterpiece"
+                    aria-label="Previous Masterpiece"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <span className="text-[11px] font-mono text-stone-400 px-1">
+                    {selectedArtIndex + 1} / {featuredArtworks.length}
+                  </span>
+                  <button
+                    onClick={() => setSelectedArtIndex((prev) => (prev === featuredArtworks.length - 1 ? 0 : prev + 1))}
+                    className="p-1 rounded hover:bg-stone-800 text-stone-400 hover:text-amber-200 transition-colors cursor-pointer"
+                    title="Next Masterpiece"
+                    aria-label="Next Masterpiece"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Masterpiece Quick Chips */}
+              <div className="flex flex-wrap gap-1.5 pt-0.5">
+                {featuredArtworks.map((art, idx) => {
+                  const isCur = idx === selectedArtIndex;
+                  return (
+                    <button
+                      key={art.id}
+                      onClick={() => setSelectedArtIndex(idx)}
+                      className={`text-[11px] px-2.5 py-1 rounded-md font-serif transition-all cursor-pointer ${
+                        isCur
+                          ? 'bg-amber-500/25 text-amber-200 border border-amber-400/50 font-bold'
+                          : 'bg-stone-800/80 hover:bg-stone-800 text-stone-400 border border-stone-700/60'
+                      }`}
+                    >
+                      {idx === 0 ? 'The Supper at Emmaus' : idx === 1 ? 'La Disputa' : 'Immaculate Conception'}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div>
+                <h4 className="font-serif text-lg sm:text-xl font-bold text-white">
+                  {pairedArt.title}
+                </h4>
+                <p className="text-xs text-stone-400 font-serif italic">
+                  {pairedArt.artist} ({pairedArt.year}) — {pairedArt.location}
+                </p>
+              </div>
+
+              <p className="text-xs sm:text-sm text-stone-300 font-serif leading-relaxed line-clamp-3">
                 {pairedArt.theologicalReflection}
               </p>
+
               {onOpenArtViewer && (
                 <button
                   onClick={() => onOpenArtViewer(pairedArt.id)}
@@ -561,7 +626,7 @@ ${reading.reflection.content}`;
         </div>
       )}
 
-      {/* DAILY PATRISTIC & LITURGICAL REFLECTION */}
+      {/* DAILY PATRISTIC and LITURGICAL REFLECTION */}
       <article className="bg-[#FAF8F5]/92 backdrop-blur-md rounded-xl p-6 sm:p-8 shadow-lg border border-amber-900/15 space-y-3">
         <div className="flex items-center gap-2 text-amber-900">
           <BookOpen className="w-4 h-4" />
