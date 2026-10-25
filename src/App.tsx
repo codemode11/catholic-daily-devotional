@@ -31,6 +31,7 @@ import { EucharisticCatechismView } from './components/EucharisticCatechismView'
 import { HolyMassLivePlayerView } from './components/HolyMassLivePlayerView';
 import { BibleFlashcardsView } from './components/BibleFlashcardsView';
 import { ChurchHistoryInfographicView } from './components/ChurchHistoryInfographicView';
+import { ChurchCouncilsTimelineView } from './components/ChurchCouncilsTimelineView';
 import { CatholicLinksView } from './components/CatholicLinksView';
 import { PodcastEpisode } from './types';
 import { getTopVaticanHeadline } from './data/news';
@@ -77,7 +78,12 @@ export default function App() {
   const [selectedArtId, setSelectedArtId] = useState<string | undefined>(undefined);
   const [activeEstablishingImageId, setActiveEstablishingImageId] = useState<string>(() => {
     try {
-      return localStorage.getItem('sanctum_establishing_image_v3') || 'unsplash-eucharistic-adoration';
+      const stored = localStorage.getItem('sanctum_establishing_image_v3');
+      if (!stored || stored === 'supper-at-emmaus' || stored === 'star-of-the-immaculate' || stored === 'cathedral-sanctum-adoration') {
+        localStorage.setItem('sanctum_establishing_image_v3', 'unsplash-eucharistic-adoration');
+        return 'unsplash-eucharistic-adoration';
+      }
+      return stored;
     } catch {
       return 'unsplash-eucharistic-adoration';
     }
@@ -383,7 +389,7 @@ export default function App() {
       
       {/* Fixed Full-Website Sacred Sanctum Background: Enlarged proportionally without distortion, cross uncropped, monstrance centered, priest visible, equal left/right margins */}
       <div className="fixed inset-0 z-0 select-none pointer-events-none overflow-hidden flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8">
-        {/* Enlarged & Centered Image Container with GPU-Accelerated Smooth Vertical-Only Parallax */}
+        {/* Enlarged and Centered Image Container with GPU-Accelerated Smooth Vertical-Only Parallax */}
         <div 
           ref={imageParallaxRef}
           className="relative w-full max-w-7xl mx-auto flex items-start justify-center overflow-hidden will-change-transform backface-hidden"
@@ -393,8 +399,16 @@ export default function App() {
               <img
                 src={activeEstablishingImage.imageUrl}
                 alt={activeEstablishingImage.title}
-                referrerPolicy="no-referrer"
                 decoding="async"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('images.unsplash.com')) {
+                    target.src = 'https://images.unsplash.com/photo-1599752766954-57c001ba82cc?q=80&w=1471&auto=format&fit=crop';
+                  } else {
+                    target.src = '/images/sacred-art/eucharistic_adoration_altar.jpg';
+                  }
+                }}
                 className="w-[120%] max-w-none -mt-[24.5%] h-auto block brightness-[1.06] contrast-[1.06] transform-gpu shrink-0"
               />
               {/* Subtle bottom edge feathering so the priest remains completely visible */}
@@ -405,8 +419,12 @@ export default function App() {
               <img
                 src={activeEstablishingImage.imageUrl}
                 alt={activeEstablishingImage.title}
-                referrerPolicy="no-referrer"
                 decoding="async"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.src = 'https://images.unsplash.com/photo-1599752766954-57c001ba82cc?q=80&w=1471&auto=format&fit=crop';
+                }}
                 className="w-full h-full mx-auto object-contain object-center pt-2 sm:pt-3 brightness-[0.99] contrast-[1.08] transform-gpu"
               />
             </div>
@@ -434,12 +452,12 @@ export default function App() {
         />
       </div>
 
-      {/* Foreground Container with Frosted Glass Transparency & Sacred Ambiance */}
+      {/* Foreground Container with Frosted Glass Transparency and Sacred Ambiance */}
       <div className="relative z-10 flex flex-col min-h-screen">
         
         {/* Full-Viewport Masthead Section (min-h-screen) so the Vatican story sits near the bottom and pushes the Index and main panel below the fold */}
         <div className="min-h-screen w-full flex flex-col justify-between pb-4 sm:pb-6">
-          {/* Sacred Top Header with Ample Negative Space & Blessed Sacrament in Mary Sculpture */}
+          {/* Sacred Top Header with Ample Negative Space and Blessed Sacrament in Mary Sculpture */}
           <Header
             currentDateStr={currentDateStr}
             liturgicalColor={currentMassReading.liturgicalColor}
@@ -574,7 +592,7 @@ export default function App() {
               />
             )}
 
-            {/* Worldwide Holy Mass & Vatican Livestreams Video Player */}
+            {/* Worldwide Holy Mass and Vatican Livestreams Video Player */}
             {activeTab === 'live-mass' && (
               <HolyMassLivePlayerView currentReading={currentMassReading} />
             )}
@@ -610,11 +628,13 @@ export default function App() {
               <EucharisticCatechismView initialSection="miracles" />
             )}
 
-            {/* Marian Messages & Apparitions */}
+            {/* Marian Messages and Apparitions */}
             {activeTab === 'medjugorje' && <MarianApparitionsView />}
 
             {/* 11. Novena Tracker */}
-            {activeTab === 'novenas' && <NovenaTrackerView />}
+            {activeTab === 'novenas' && (
+              <NovenaTrackerView currentDateStr={currentDateStr} />
+            )}
 
             {/* 12. Church Calendar */}
             {activeTab === 'calendar' && (
@@ -628,8 +648,11 @@ export default function App() {
               />
             )}
 
-            {/* Church History Timeline & Global Catholic Infographics */}
+            {/* Church History Timeline and Global Catholic Infographics */}
             {activeTab === 'church-history' && <ChurchHistoryInfographicView />}
+
+            {/* All 21 Ecumenical Councils of the Church Timeline */}
+            {activeTab === 'councils' && <ChurchCouncilsTimelineView />}
 
             {/* 13. Bible Study (commentary) */}
             {activeTab === 'bible-study' && (
@@ -639,7 +662,7 @@ export default function App() {
               />
             )}
 
-            {/* Bible Verse & Passage Memorization Flashcards Tool */}
+            {/* Bible Verse and Passage Memorization Flashcards Tool */}
             {activeTab === 'bible-flashcards' && <BibleFlashcardsView />}
 
             {/* 14. Sacred Art Gallery */}
@@ -858,7 +881,7 @@ export default function App() {
         />
       )}
 
-      {/* Catholic Podcast Episode Study Guide & Notes Modal */}
+      {/* Catholic Podcast Episode Study Guide and Notes Modal */}
       <PodcastEpisodeModal
         episode={podcastModalEpisode}
         isOpen={!!podcastModalEpisode}
