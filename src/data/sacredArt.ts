@@ -47,7 +47,7 @@ export const NIEPOKALANOW_HIGH_RES_IMAGES: NiepokalanowHighResImage[] = [
     description: 'The Risen Christ blessing and breaking the bread, opening the eyes of His disciples in the Holy Eucharist.',
     attributionText: 'Michelangelo Merisi da Caravaggio (1601) • National Gallery, London',
     creditShort: 'Caravaggio • Emmaus',
-    attributionUrl: '/images/sacred-art/supper_at_emmaus.jpg',
+    attributionUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/1602-3_Caravaggio%2CSupper_at_Emmaus_National_Gallery%2C_London.jpg',
     objectPosition: 'center 45%'
   },
   {
@@ -59,7 +59,7 @@ export const NIEPOKALANOW_HIGH_RES_IMAGES: NiepokalanowHighResImage[] = [
     description: 'The Church triumphant and Church militant united in perpetual adoration of the Blessed Sacrament.',
     attributionText: 'Raphael (1509–1510) • Apostolic Palace, Vatican',
     creditShort: 'Raphael • La Disputa',
-    attributionUrl: '/images/sacred-art/raphael_disputa.jpg',
+    attributionUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Raphael%2C_Disputation_of_the_Holy_Sacrament%2C_1509-10%2C_Vatican_Museums_%2848759463557%29.jpg/1280px-Raphael%2C_Disputation_of_the_Holy_Sacrament%2C_1509-10%2C_Vatican_Museums_%2848759463557%29.jpg',
     objectPosition: 'center 35%'
   },
   {
@@ -71,7 +71,7 @@ export const NIEPOKALANOW_HIGH_RES_IMAGES: NiepokalanowHighResImage[] = [
     description: 'The Blessed Virgin Mary, Woman clothed with the sun and living Tabernacle of the Most High.',
     attributionText: 'Bartolomé Esteban Murillo (1678) • Museo del Prado, Madrid',
     creditShort: 'Murillo • Immaculate Conception',
-    attributionUrl: '/images/sacred-art/murillo_immaculate_conception.jpg',
+    attributionUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/61/Murillo_immaculate_conception.jpg',
     objectPosition: 'center 30%'
   },
   {
@@ -96,7 +96,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1601',
     location: 'National Gallery, London',
     imageUrl: 'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/4/4d/1602-3_Caravaggio%2CSupper_at_Emmaus_National_Gallery%2C_London.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/supper_at_emmaus.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/1602-3_Caravaggio%2CSupper_at_Emmaus_National_Gallery%2C_London.jpg',
     scriptureReference: 'Luke 24:30-31: "When he was at table with them, he took the bread and blessed and broke it, and gave it to them. And their eyes were opened and they recognized him; and he vanished out of their sight."',
     theologicalReflection: `At the exact moment Christ blesses and breaks the bread, the disciples suddenly recognize the stranger as their Crucified Master. Cleopas leaps forward in shock while the other disciple throws back his arms in astonishment, forming the shape of a cross. The basket of fruit teeters dramatically over the edge of the table, reminding us of the fragility of earthly life in the presence of the eternal Eucharistic banquet.`,
     associatedMysteryOrSubject: 'The Holy Eucharist and Sacred Liturgy'
@@ -108,7 +108,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1509–1510',
     location: 'Stanza della Segnatura, Apostolic Palace, Vatican',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F8%2F81%2FRaphael%252C_Disputation_of_the_Holy_Sacrament%252C_1509-10%252C_Vatican_Museums_%252848759463557%2529.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/raphael_disputa.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Raphael%2C_Disputation_of_the_Holy_Sacrament%2C_1509-10%2C_Vatican_Museums_%2848759463557%29.jpg/1280px-Raphael%2C_Disputation_of_the_Holy_Sacrament%2C_1509-10%2C_Vatican_Museums_%2848759463557%29.jpg',
     scriptureReference: 'John 6:51: "I am the living bread that came down from heaven. If anyone eats of this bread, he will live forever; and the bread that I will give for the life of the world is my flesh."',
     theologicalReflection: `Raphael's colossal fresco visualizes the mystery of the Church united in perpetual adoration of the Holy Eucharist. At the focal point on the altar stands a golden monstrance containing the Blessed Sacrament—the physical nexus between Heaven and Earth. Above, the Holy Trinity reigns: God the Father blesses the cosmos, the glorified Risen Christ displays His sacred wounds flanked by the Virgin Mary and Saint John the Baptist, and the Holy Spirit descends in the form of a dove. On earth below, doctors of the Church contemplate and write upon the unfathomable mystery of Transubstantiation.`,
     associatedMysteryOrSubject: 'The Holy Eucharist, The Communion of Saints, and The Holy Trinity'
@@ -120,7 +120,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1678',
     location: 'Museo del Prado, Madrid',
     imageUrl: 'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/6/61/Murillo_immaculate_conception.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/murillo_immaculate_conception.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/61/Murillo_immaculate_conception.jpg',
     scriptureReference: 'Revelation 12:1: "And a great sign appeared in heaven: a woman clothed with the sun, with the moon under her feet, and on her head a crown of twelve stars."',
     theologicalReflection: `Murillo, acclaimed as the master of Marian painting, portrays the Blessed Virgin Mary preserved immune from all stain of original sin from the first instant of her conception. Bathed in golden celestial radiance and robed in pure white and azure blue, Our Lady stands upon the crescent moon with hands folded across her heart, lifted by jubilant hosts of cherubim carrying palms and lilies of purity. Her humble, upward gaze invites every soul into pure contemplation of God's redeeming grace.`,
     associatedMysteryOrSubject: 'The Immaculate Conception and The Blessed Virgin Mary'
@@ -132,7 +132,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1495–1498',
     location: 'Convent of Santa Maria delle Grazie, Milan',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F4%2F48%2FThe_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg%2F1280px-The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/leonardo_last_supper.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg/1280px-The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg',
     scriptureReference: 'Luke 22:19: "And he took bread, and when he had given thanks he broke it and gave it to them, saying, \'This is my body which is given for you. Do this in remembrance of me.\'"',
     theologicalReflection: `Leonardo captures the sacred, tense moment immediately following Christ's declaration: "Truly, truly, I say to you, one of you will betray me." At the center, Jesus sits in calm, pyramidical majesty—the still point around which the twelve Apostles surge in waves of agitation and questioning. Jesus gestures with open hands toward the bread and wine, establishing the Holy Sacrifice of the Mass and the Priesthood of the New Covenant.`,
     associatedMysteryOrSubject: 'The Institution of the Holy Eucharist and Holy Thursday'
@@ -144,7 +144,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1857–1859',
     location: "Musée d'Orsay, Paris",
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F17%2FJEAN-FRAN%25C3%2587OIS_MILLET_-_El_%25C3%2581ngelus_%2528Museo_de_Orsay%252C_1857-1859._%25C3%2593leo_sobre_lienzo%252C_55.5_x_66_cm%2529.jpg%2F1280px-JEAN-FRAN%25C3%2587OIS_MILLET_-_El_%25C3%2581ngelus_%2528Museo_de_Orsay%252C_1857-1859._%25C3%2593leo_sobre_lienzo%252C_55.5_x_66_cm%2529.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/millet_angelus.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/JEAN-FRAN%C3%87OIS_MILLET_-_El_%C3%81ngelus_%28Museo_de_Orsay%2C_1857-1859._%C3%93leo_sobre_lienzo%2C_55.5_x_66_cm%29.jpg/1280px-JEAN-FRAN%C3%87OIS_MILLET_-_El_%C3%81ngelus_%28Museo_de_Orsay%2C_1857-1859._%C3%93leo_sobre_lienzo%2C_55.5_x_66_cm%29.jpg',
     scriptureReference: 'Luke 1:38: "And Mary said, \'Behold, I am the handmaid of the Lord; let it be to me according to your word.\' And the angel departed from her."',
     theologicalReflection: `Millet's immortal masterpiece depicts a humble peasant couple in Barbizon at dusk, pausing their arduous harvest work as the distant church bell tolls the evening Angelus. The man removes his cap and clasps it reverently, while the woman folds her hands across her breast in devout recitation of the Incarnation prayer. The twilight golden haze envelopes the scene, sanctifying ordinary daily labor and elevating human work into continuous contemplation and praise of God.`,
     associatedMysteryOrSubject: 'The Incarnation, Sacred Labor, and The Angelus'
@@ -155,8 +155,8 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     artist: 'Michelangelo Merisi da Caravaggio',
     year: '1599–1600',
     location: 'Contarelli Chapel, San Luigi dei Francesi, Rome',
-    imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F59%2FCaravaggio_%E2%80%94_The_Calling_of_Saint_Matthew.jpg%2F1280px-Caravaggio_%E2%80%94_The_Calling_of_Saint_Matthew.jpg',
-    fallbackImageUrl: '/images/sacred-art/calling_of_matthew.jpg',
+    imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F59%2FCaravaggio_%25E2%2580%2594_The_Calling_of_Saint_Matthew.jpg%2F1280px-Caravaggio_%25E2%2580%2594_The_Calling_of_Saint_Matthew.jpg&w=1200&output=jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Caravaggio_%E2%80%94_The_Calling_of_Saint_Matthew.jpg/1280px-Caravaggio_%E2%80%94_The_Calling_of_Saint_Matthew.jpg',
     scriptureReference: 'Matthew 9:9: "As Jesus passed on from there, he saw a man called Matthew sitting at the tax office; and he said to him, \'Follow me.\' And he rose and followed him."',
     theologicalReflection: `Caravaggio's revolutionary use of chiaroscuro visually captures the intrusion of unmerited Divine Grace into a dark, sinful world. A piercing beam of heavenly light enters from above Christ's outstretched hand—a hand deliberately mirroring Adam's hand from Michelangelo's Sistine Chapel ceiling, revealing Jesus as the New Adam who re-creates human nature. Matthew looks up in astonished humility, pointing to his chest: "Lord, is it truly me you call?"`,
     associatedMysteryOrSubject: 'Vocation, Divine Grace, and Evangelization'
@@ -168,7 +168,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1601–1602',
     location: 'Sanssouci Picture Gallery, Potsdam',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FDer_ungl%25C3%25A4ubige_Thomas_-_Michelangelo_Merisi%252C_named_Caravaggio.jpg%2F1280px-Der_ungl%25C3%25A4ubige_Thomas_-_Michelangelo_Merisi%252C_named_Caravaggio.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/incredulity_of_thomas.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Der_ungl%C3%A4ubige_Thomas_-_Michelangelo_Merisi%2C_named_Caravaggio.jpg/1280px-Der_ungl%C3%A4ubige_Thomas_-_Michelangelo_Merisi%2C_named_Caravaggio.jpg',
     scriptureReference: 'John 20:27-28: "Then he said to Thomas, \'Put your finger here, and see my hands; and put out your hand, and place it in my side; do not be faithless, but believing.\' Thomas answered him, \'My Lord and my God!\'"',
     theologicalReflection: `Caravaggio strips away all decorative distraction to present the raw physical reality of Christ's Resurrection. Jesus Himself gently guides the calloused, sunburnt hand of Saint Thomas directly into the open spear wound of His Sacred Side. The painting demonstrates that faith is not a pious myth, but founded upon tangible, historical encounters with the bodily Risen Lord.`,
     associatedMysteryOrSubject: 'The Resurrection and Faith'
@@ -180,7 +180,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1605–1606',
     location: 'Galleria Borghese, Rome',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F2%2F20%2FCaravaggio_-_Saint_Jerome_Writing%252C_c1606.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/saint_jerome_writing.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Caravaggio_-_Saint_Jerome_Writing%2C_c1606.jpg',
     scriptureReference: '2 Timothy 3:16: "All scripture is inspired by God and profitable for teaching, for reproof, for correction, and for training in righteousness."',
     theologicalReflection: `Caravaggio depicts Saint Jerome, Father and Doctor of the Church, translating Sacred Scripture into the Latin Vulgate. The saint's aged, illuminated brow concentrates upon the sacred text, while his quill extends across the parchment. Beside the scriptures sits a human skull—the Memento Mori—reminding the faithful that worldly vanity perishes, but the Word of God endures forever.`,
     associatedMysteryOrSubject: 'Sacred Scripture and Church Fathers'
@@ -192,7 +192,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1603–1604',
     location: 'Pinacoteca Vaticana, Vatican Museums, Rome',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F4%2F49%2FMichelangelo_Merisi_da_Caravaggio_-_The_Entombment_-_WGA04148.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/entombment_of_christ.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Michelangelo_Merisi_da_Caravaggio_-_The_Entombment_-_WGA04148.jpg',
     scriptureReference: 'Matthew 27:59-60: "And Joseph took the body, and wrapped it in a clean linen shroud, and laid it in his own new tomb, which he had hewn in the rock."',
     theologicalReflection: `Commissioned for the altar of the Chiesa Nuova in Rome, Caravaggio planned this masterpiece so that the viewer stands below the tomb stone. As the priest consecrated the Holy Eucharist at the altar below, Christ's limp sacred body seemed to be lowered directly onto the altar table, bridging the historical sacrifice of Golgotha with the sacramental re-presentation of the Holy Mass.`,
     associatedMysteryOrSubject: 'The 5th Sorrowful Mystery and Holy Saturday'
@@ -204,7 +204,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1438–1445',
     location: 'Convent of San Marco, Florence',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F0%2F0e%2FFra_Angelico_-_The_Annunciation_-_WGA00555.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/fra_angelico_annunciation.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Fra_Angelico_-_The_Annunciation_-_WGA00555.jpg',
     scriptureReference: 'Luke 1:38: "Behold, I am the handmaid of the Lord; let it be to me according to your word."',
     theologicalReflection: `Painted at the top of the dormitory stairs in the Dominican monastery of San Marco so that the friars would bow in veneration each time they passed. The angel Gabriel, clothed in iridescent rainbow wings, bows in reverent awe before the Queen of Angels, who crosses her hands over her breast in total humility, uttering the eternal "Fiat" that brought the Son of God into human flesh.`,
     associatedMysteryOrSubject: 'The 1st Joyful Mystery'
@@ -216,7 +216,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: '1516–1520',
     location: 'Pinacoteca Vaticana, Rome',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F5%2F51%2FTransfiguration_Raphael.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/raphael_transfiguration.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Transfiguration_Raphael.jpg',
     scriptureReference: 'Matthew 17:2: "And he was transfigured before them, and his face shone like the sun, and his garments became white as light."',
     theologicalReflection: `Raphael's final masterpiece, placed at the head of his funeral bier. The upper half portrays Christ floating in radiant clouds between Moses and Elijah on Mount Tabor, prefiguring the glory of the Resurrection. The lower half portrays the suffering earth below, reminding us that between glory and our present pilgrimage lies the necessity of prayer, fasting, and faith.`,
     associatedMysteryOrSubject: 'The 4th Luminous Mystery'
@@ -228,7 +228,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: 'c. 1642',
     location: 'Musée du Louvre, Paris',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3b%2FSaint_Joseph_Charpentier.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/joseph_carpenter.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Saint_Joseph_Charpentier.jpg/960px-Saint_Joseph_Charpentier.jpg',
     scriptureReference: 'Mark 6:3: "Is not this the carpenter, the son of Mary and brother of James and Joses and Judas and Simon?"',
     theologicalReflection: `In the darkness of Nazareth, young Jesus holds a single candle, illuminating the weathered, concentrated face of His earthly foster-father Saint Joseph. Joseph drills into a heavy wooden beam—a poignant foreshadowing of the wood of the Cross. The candle's flame, shielded by the hand of the Child Jesus, shines through His fingers with translucent red, recalling the blood of the Lamb who lights the world.`,
     associatedMysteryOrSubject: 'Saint Joseph and Holy Family'
@@ -240,7 +240,7 @@ export const SACRED_MASTERPIECES: SacredMasterpiece[] = [
     year: 'c. 1669',
     location: 'Hermitage Museum, Saint Petersburg',
     imageUrl: 'https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F9%2F93%2FRembrandt_Harmensz_van_Rijn_-_Return_of_the_Prodigal_Son_-_Google_Art_Project.jpg%2F1280px-Rembrandt_Harmensz_van_Rijn_-_Return_of_the_Prodigal_Son_-_Google_Art_Project.jpg&w=1200&output=jpg',
-    fallbackImageUrl: '/images/sacred-art/return_prodigal_son.jpg',
+    fallbackImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Rembrandt_Harmensz_van_Rijn_-_Return_of_the_Prodigal_Son_-_Google_Art_Project.jpg/1280px-Rembrandt_Harmensz_van_Rijn_-_Return_of_the_Prodigal_Son_-_Google_Art_Project.jpg',
     scriptureReference: 'Luke 15:20: "And he arose and came to his father. But while he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him."',
     theologicalReflection: `Rembrandt depicts the fathomless mercy of God the Father embracing the penitent sinner. Notice the Father's two hands on the son's shoulder: the left hand is masculine and strong, representing divine justice and steadfast fatherhood; the right hand is feminine and soft, representing tender maternal compassion. The barefoot son rests his shaved, weary head against the Father's heart.`,
     associatedMysteryOrSubject: 'Penance, Divine Mercy and Forgiveness'
